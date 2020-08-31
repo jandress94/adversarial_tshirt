@@ -1,0 +1,46 @@
+name: adversarial_tshirt
+channels:
+  - defaults
+dependencies:
+  - blas=1.0
+  - ca-certificates=2020.7.22
+  - certifi=2020.6.20
+  - freetype=2.10.2
+  - intel-openmp=2020.2
+  - joblib=0.16.0
+  - jpeg=9b
+  - lcms2=2.11
+  - libcxx=10.0.0
+  - libedit=3.1.20191231
+  - libffi=3.3
+  - libgfortran=3.0.1
+  - libpng=1.6.37
+  - libtiff=4.1.0
+  - llvm-openmp=10.0.0
+  - lz4-c=1.9.2
+  - mkl=2019.4
+  - mkl-service=2.3.0
+  - mkl_fft=1.1.0
+  - mkl_random=1.1.1
+  - ncurses=6.2
+  - numpy=1.19.1
+  - numpy-base=1.19.1
+  - olefile=0.46
+  - openssl=1.1.1g
+  - pillow=7.2.0
+  - pip=20.2.2
+  - python=3.8.5
+  - readline=8.0
+  - scikit-learn=0.23.2
+  - scipy=1.5.0
+  - setuptools=49.6.0
+  - six=1.15.0
+  - sqlite=3.33.0
+  - threadpoolctl=2.1.0
+  - tk=8.6.10
+  - wheel=0.35.1
+  - xz=5.2.5
+  - zlib=1.2.11
+  - zstd=1.4.5
+prefix: /Users/jim/anaconda3/envs/adversarial_tshirt
+
