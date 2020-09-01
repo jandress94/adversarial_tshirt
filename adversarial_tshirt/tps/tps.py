@@ -70,6 +70,10 @@ def solve_img_tps(orig_img, control_pts_start, control_pts_end, num_pin_pts=5):
     delta_x_fn = get_spline_fn(a_x, control_pts_end, w_x)
     delta_y_fn = get_spline_fn(a_y, control_pts_end, w_y)
 
+    return delta_x_fn, delta_y_fn
+
+
+def apply_img_tps(orig_img, delta_x_fn, delta_y_fn):
     new_img = np.zeros_like(orig_img)
 
     for x in range(orig_img.shape[1]):
@@ -83,26 +87,20 @@ def solve_img_tps(orig_img, control_pts_start, control_pts_end, num_pin_pts=5):
     return Image.fromarray(new_img)
 
 
+if __name__ == '__main__':
+    # ORIG_IMG_PATH = 'data/tps/head.jpg'
+    # NEW_IMG_PATH = 'data/tps/head_warped.jpg'
 
+    ORIG_IMG_PATH = 'data/tps/head.jpg'
+    NEW_IMG_PATH = 'data/tps/head_warped.jpg'
 
-# ORIG_IMG_PATH = 'data/img/head.jpg'
-# NEW_IMG_PATH = 'data/img/head_warped.jpg'
+    img = Image.open(ORIG_IMG_PATH)
+    img.load()
+    img_data = np.asarray(img)
 
-ORIG_IMG_PATH = 'data/img/head.jpg'
-NEW_IMG_PATH = 'data/img/head_warped.jpg'
+    # delta_x_fn, delta_y_fn = solve_img_tps(img_data, np.array([[900, 820], [980, 780], [1040, 730]]), np.array([[850, 800], [980, 780], [1040, 680]]))
+    delta_x_fn, delta_y_fn = solve_img_tps(img_data, np.array([[970, 700], [870, 160], [420, 570]]), np.array([[860, 600], [1050, 120], [350, 760]]))
+    # delta_x_fn, delta_y_fn = solve_img_tps(img_data, np.array([[97, 70]]), np.array([[86, 60]]))
 
-
-img = Image.open(ORIG_IMG_PATH)
-img.load()
-img_data = np.asarray(img)
-
-# solve_img_tps(img_data, np.array([[100, 200], [300, 400], [500, 600]]), np.array([[90, 210], [320, 380], [470, 630]]))
-
-
-# new_img = solve_img_tps(img_data, np.array([[900, 820], [980, 780], [1040, 730]]), np.array([[850, 800], [980, 780], [1040, 680]]))
-new_img = solve_img_tps(img_data, np.array([[970, 700], [870, 160], [420, 570]]), np.array([[860, 600], [1050, 120], [350, 760]]))
-# new_img = solve_img_tps(img_data, np.array([[97, 70]]), np.array([[86, 60]]))
-new_img.save(NEW_IMG_PATH)
-
-
-
+    new_img = apply_img_tps(img_data, delta_x_fn, delta_y_fn)
+    new_img.save(NEW_IMG_PATH)
